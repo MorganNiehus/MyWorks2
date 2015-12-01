@@ -1,0 +1,146 @@
+// ***********************************************************************
+//  VoteCounter2.java
+//
+//  Panel for the GUI that tallies votes for two candidates, Joe and Sam.
+// ***********************************************************************
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class VoteCounterPanel2 extends JPanel
+{
+    private int votesForJoe;
+    private int votesForSam;
+    private int votesForMe;
+    
+    private int percentVotesJoe;
+    private int percentVotesSam;
+    private int percentVotesMe;
+    
+    private JLabel labelJoe;
+    private JLabel labelSam;
+    private JLabel labelMe;
+    
+    private JLabel percentLabelJoe;
+    private JLabel percentLabelSam;
+    private JLabel percentLabelMe;
+    
+    private JLabel winnerLabel;
+    private JButton joe, sam, me;
+    
+    private int counter;
+    
+    // -------------------------------------------------------
+    //  Constructor:  Sets up the GUI
+    // -------------------------------------------------------
+    public VoteCounterPanel2()
+    {
+	votesForJoe = 0;
+	votesForSam = 0;
+	votesForMe = 0;
+	
+	percentVotesJoe = 0;
+	percentVotesSam = 0;
+	percentVotesMe = 0;
+	
+	counter = 0;
+  	
+	joe = new JButton ("Vote for Joe!");
+	VoteButtonListener voteListener = new VoteButtonListener();
+	joe.addActionListener (voteListener);
+	
+	labelJoe = new JLabel ("Votes for Joe: " + votesForJoe);
+
+	sam = new JButton ("Vote for Sam!");
+	sam.addActionListener (voteListener);
+	
+	labelSam = new JLabel ("Votes for Sam: " + votesForSam);
+	
+	me = new JButton ("Vote for Me!");
+	me.addActionListener(voteListener);
+	
+	labelMe = new JLabel ("Votes for Me: " + votesForMe);
+      
+	winnerLabel = new JLabel ("---");
+
+	add (joe);
+	add (labelJoe);
+	add (sam);
+	add (labelSam);
+	add (me);
+	add (labelMe);
+    
+	add (winnerLabel);
+	
+
+	
+
+
+	setPreferredSize (new Dimension(300, 200));
+	setBackground (Color.cyan);
+    }
+
+
+    // *******************************************************************
+    //  Represents a listener for button push (action) events.
+    // *******************************************************************
+    private class VoteButtonListener implements ActionListener
+    {
+        public void actionPerformed (ActionEvent event)
+        {
+	    if (event.getSource() == joe)
+		{
+		    votesForJoe++;
+		    counter++;
+		    labelJoe.setText ("Votes for Joe: " + votesForJoe);
+		    percentLabelJoe.setText("Joes percentage: " + percentVotesJoe);
+	
+		}
+	    else if (event.getSource() == sam)
+
+		{
+		    votesForSam++;
+		    counter++;
+		    labelSam.setText ("Votes for Sam: " + votesForSam); 
+		}
+	    else if (event.getSource() == me)
+	    {
+	    	votesForMe++;
+	    	counter++;
+	    	labelMe.setText("Votes for me: " + votesForMe);
+	    }
+	    
+	    percentVotesJoe = votesForJoe/counter; percentLabelJoe.setText("Joes percent: " + percentVotesJoe);
+	    percentVotesSam = votesForSam/counter; percentLabelSam.setText("Joes percent: " + percentVotesSam);
+	    percentVotesMe = votesForMe/counter; percentLabelMe.setText("Joes percent: " + percentVotesMe);
+	    
+	    
+	    
+		add (percentLabelJoe);
+		add (percentLabelSam);
+		add (percentLabelMe);
+        
+
+	    
+	    
+	    if (votesForJoe > votesForSam && votesForJoe > votesForMe){
+		   winnerLabel.setText ("Joe is ahead in the vote count!!");
+	    }
+	    else if (votesForSam > votesForJoe && votesForSam > votesForMe){
+		   winnerLabel.setText ("Sam is ahead in the vote count!!");
+	    }
+	    else if( votesForMe > votesForJoe && votesForMe > votesForSam){
+	    	winnerLabel.setText ("I am ahead in the vote count!!");
+	    }
+	    else if(votesForMe == votesForJoe && votesForSam == votesForMe){
+          winnerLabel.setText ("We have a three way tie!!");
+	    }
+	    else{
+	    	winnerLabel.setText ("there is a two way tie!!!!!");
+	    }
+	    
+        }
+    }
+    
+}

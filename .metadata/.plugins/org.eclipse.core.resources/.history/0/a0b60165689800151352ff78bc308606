@@ -1,0 +1,82 @@
+// ***********************************************************************
+//  VoteCounter2.java
+//
+//  Panel for the GUI that tallies votes for two candidates, Joe and Sam.
+// ***********************************************************************
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class VoteCounterPanel2 extends JPanel
+{
+    private int votesForJoe;
+    private int votesForSam;
+    private JLabel labelJoe;
+    private JLabel labelSam;
+    private JLabel winnerLabel;
+    private JButton joe, sam;
+    
+    // -------------------------------------------------------
+    //  Constructor:  Sets up the GUI
+    // -------------------------------------------------------
+    public VoteCounterPanel2()
+    {
+	votesForJoe = 0;
+	votesForSam = 0;
+  	
+	joe = new JButton ("Vote for Joe!");
+	VoteButtonListener voteListener = new VoteButtonListener();
+	joe.addActionListener (voteListener);
+	
+	labelJoe = new JLabel ("Votes for Joe: " + votesForJoe);
+
+	sam = new JButton ("Vote for Sam!");
+	sam.addActionListener (voteListener);
+	
+	labelSam = new JLabel ("Votes for Sam: " + votesForSam);
+      
+	winnerLabel = new JLabel ("---");
+
+	add (joe);
+	add (labelJoe);
+	add (sam);
+	add (labelSam);
+    
+	add (winnerLabel);
+
+	setPreferredSize (new Dimension(300, 120));
+	setBackground (Color.cyan);
+    }
+
+
+    // *******************************************************************
+    //  Represents a listener for button push (action) events.
+    // *******************************************************************
+    private class VoteButtonListener implements ActionListener
+    {
+        public void actionPerformed (ActionEvent event)
+        {
+	    if (event.getSource() == joe)
+		{
+		    votesForJoe++;
+		    labelJoe.setText ("Votes for Joe: " + votesForJoe);
+		}
+	    else if (event.getSource() == sam)
+
+		{
+		    votesForSam++;
+		    labelSam.setText ("Votes for Sam: " + votesForSam); 
+		} 
+        
+
+	    if (votesForJoe > votesForSam)
+		   winnerLabel.setText ("Joe is ahead in the vote count!!");
+	    else if (votesForSam > votesForJoe)
+		   winnerLabel.setText ("Sam is ahead in the vote count!!");
+	    else
+          winnerLabel.setText ("We have a tie!!");
+        }
+    }
+    
+}
