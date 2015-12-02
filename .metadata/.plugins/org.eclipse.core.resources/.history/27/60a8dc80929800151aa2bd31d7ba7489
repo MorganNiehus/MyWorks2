@@ -1,0 +1,21 @@
+
+public class Main {
+	
+	public static void main(String[] args){
+			
+	
+		System.out.println(swapString("VALDOSTA"));
+		
+	}
+	public static String swapString(String word){
+		
+		int mid = word.length() / 2;
+		
+		String end = word.substring(mid);
+		String begin = word.substring(word.length() - mid);
+		
+		return end + " " + begin;
+		
+	}
+
+}

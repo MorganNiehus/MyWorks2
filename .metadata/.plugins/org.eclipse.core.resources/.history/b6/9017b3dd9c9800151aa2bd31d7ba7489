@@ -1,0 +1,28 @@
+
+public class DeliveryOrder {
+	
+	private String address;
+	private long phone;
+	private double cost;
+	
+	public DeliveryOrder(String address, long phone, double cost){
+		this.address = "9999 road rd";
+		this.phone = 999999999;
+		this.cost = 0.00;
+	}
+	
+	public String getAddress(){
+		return address;
+	}
+	
+	public void setPhone(long phone){
+		this.phone = phone;
+	}
+	
+	public String toString(){
+		String value;
+		value = "Address: " + address + "\nPhone: " + phone + "\nCost: " + cost;
+		return value;
+	}
+
+}
