@@ -1,0 +1,35 @@
+
+public class Loan {
+	
+	private double annualInterestRate;
+	private int numberOfYear;
+	private double loanAmount;
+	
+	public Loan(){
+		
+	}
+	
+	public Loan(double annualInterestRate, int numberOfYear, double loanAmount){
+		
+		this.annualInterestRate = annualInterestRate;
+		this.numberOfYear = numberOfYear;
+		this.loanAmount = loanAmount;
+		
+	}
+	
+	public double monthlyPayment(){
+		double totalPayment;
+		annualInterestRate = ((double)annualInterestRate / 100) + 1;
+		totalPayment = (loanAmount * numberOfYear) * annualInterestRate;
+		double monthlyPayment = (Math.pow(totalPayment,12));
+		return monthlyPayment;
+	}
+	
+	public double totalPayment(){
+		double totalPayment;
+		annualInterestRate = ((double)annualInterestRate / 100) + 1;
+		totalPayment = (loanAmount * numberOfYear) * annualInterestRate;
+		return totalPayment;
+	}
+
+}

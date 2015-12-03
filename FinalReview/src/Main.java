@@ -5,12 +5,13 @@ public class Main {
 			
 		double volumeVal = volume(5);
 		int[] smallestArray = {5,2,6,2,8,9,4,3};
+		int[] populateArray = new int[60];
 		
 		System.out.println(swapString("VALDOSTA"));
 		System.out.println(distance(1,-2,5,1));
 		System.out.printf("%10.1f" , volume(5));
 		System.out.printf("\n%10d" , smallest(smallestArray));
-		
+		System.out.printf("\n%10s" , computerGrade(90));
 		
 	}
 	public static String swapString(String word){
@@ -45,6 +46,30 @@ public class Main {
 		}
 		return temp;
 	}
+	
+	public static char computerGrade(int score){
+		char grade;
+		if(score >= 90)
+			grade = 'A';
+		else if(score >= 80)
+			grade = 'B';
+		else if(score >= 70)
+			grade = 'C';
+		else if(score >= 60)
+			grade = 'D';
+		else
+			grade = 'F';
+		return grade;
+		
+	}
+	public static void rotateLeft(int[] numbers){
+		for(int i = 0; i < numbers.length; i++){
+			numbers[i] - 1;
+		}
+	}
+	
+	
+	
 	
 	
 	
